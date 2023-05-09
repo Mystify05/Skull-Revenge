@@ -1,5 +1,4 @@
 #! usr/bin/bash
-
 git add .
 
 read commit

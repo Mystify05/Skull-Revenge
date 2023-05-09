@@ -1,3 +1,3 @@
 # Skull-Revenge
-Just a test repo
-hmmm dose this work?
+
+A game where you are a Skull and wants to take Revenge for the one who killed you
