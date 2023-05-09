@@ -12,6 +12,7 @@ public class SPJoystick : MonoBehaviour
     [SerializeField]
     private float knobRange;
     // Start is called before the first frame update
+    /*
     void Start()
     {
         knobRect = GetComponent<RectTransform>();
@@ -27,4 +28,5 @@ public class SPJoystick : MonoBehaviour
         direction = (Vector2)knobRect.transform.localPosition - dPostion;
         player.transform.Translate(direction);
     }
+    */
 }
