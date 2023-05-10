@@ -6,9 +6,10 @@ echo "Was hast du gemacht?"
 
 read commit
 
-git commit -m $commit
+git commit -m "$commit"
 
 git push
 
-echo "Enter any key
+echo "Enter any key"
+
 read stop
