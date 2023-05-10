@@ -1,5 +1,7 @@
 #! usr/bin/bash
 
+# Ich glaube es funktioniert
+
 git add .
 
 echo "Was hast du gemacht?"
