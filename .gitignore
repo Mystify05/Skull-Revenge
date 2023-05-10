@@ -48,7 +48,6 @@ ExportedObj/
 *.VC.db
 commit.sh
 pull.sh
-
 # Unity3D generated meta files
 *.pidb.meta
 *.pdb.meta
