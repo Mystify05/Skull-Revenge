@@ -12,6 +12,6 @@ git commit -m "$commit"
 
 git push
 
-echo "Enter any key"
+echo "Press any key"
 
 read stop
