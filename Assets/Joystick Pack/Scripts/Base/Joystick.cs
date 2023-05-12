@@ -49,14 +49,19 @@ public class Joystick : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
         if (canvas == null)
             Debug.LogError("The Joystick is not placed inside a canvas");
 
+        //Die Mitte wird fest gelegt
         Vector2 center = new Vector2(0.5f, 0.5f);
         background.pivot = center;
+        //min und max sind hier, damit handle immer in der Mitte von background sind
         handle.anchorMin = center;
         handle.anchorMax = center;
         handle.pivot = center;
+        //damit handle am Anfang in der Mitte ist
         handle.anchoredPosition = Vector2.zero;
     }
 
+    //Wird sicher gestellt, dass OnDrag ausgeführt wird
+    //PointerEventData sind informationen über (in diesen fall) den Touch
     public virtual void OnPointerDown(PointerEventData eventData)
     {
         OnDrag(eventData);
@@ -129,6 +134,7 @@ public class Joystick : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
         return 0;
     }
 
+    //Ich glaube hier wird der Joystick zurück gesetzt
     public virtual void OnPointerUp(PointerEventData eventData)
     {
         input = Vector2.zero;

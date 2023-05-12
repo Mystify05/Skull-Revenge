@@ -176,6 +176,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1523617749}
   direction: {x: 0, y: 0}
+  knobRange: 0
 --- !u!114 &454416674
 MonoBehaviour:
   m_ObjectHideFlags: 0
