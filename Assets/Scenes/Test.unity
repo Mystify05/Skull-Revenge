@@ -174,9 +174,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89656b77e1b1e4248bd9fbfae185d4c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1523617749}
-  direction: {x: 0, y: 0}
-  knobRange: 0
+  background: {fileID: 510269411}
+  handle: {fileID: 454416672}
 --- !u!114 &454416674
 MonoBehaviour:
   m_ObjectHideFlags: 0

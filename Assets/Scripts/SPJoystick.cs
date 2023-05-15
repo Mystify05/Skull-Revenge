@@ -1,32 +1,73 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class SPJoystick : MonoBehaviour
+public class SPJoystick : MonoBehaviour, IPointerDownHandler, IDragHandler, IPointerUpHandler
 {
-    public GameObject player;
-    public Vector2 direction;
-    private Vector2 dPostion; //d = default
-    private RectTransform knobRect;
-    [SerializeField]
-    private float knobRange;
-    // Start is called before the first frame update
-    /*
-    void Start()
+    [SerializeField] private RectTransform background = null;
+    [SerializeField] private RectTransform handle = null;
+    private Canvas canvas;
+    private Vector2 input = Vector2.zero;
+    private Touch touch;
+    private bool touchOn = false;
+    private bool dragOn = false;
+
+    private void Start()
     {
-        knobRect = GetComponent<RectTransform>();
-        dPostion = (Vector2) knobRect.transform.localPosition;
+        canvas = GetComponentInParent<Canvas>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        Touch touch = Input.GetTouch(0);
-        Vector2 touchPosition = Camera.main.WorldToScreenPoint(touch.position);
-        //if(touchPosition.y-kn)
-        direction = (Vector2)knobRect.transform.localPosition - dPostion;
-        player.transform.Translate(direction);
+        if(Input.touchCount > 0 && !touchOn)
+        {
+            touchOn = true;
+            touch = Input.GetTouch(0);
+            background.position = touch.position;
+        }
+        else if(Input.touchCount == 0)
+            touchOn = false;
+
+        PointerEventData pData = new PointerEventData(EventSystem.current);
+        pData.position = touch.position;
+        eventStart(pData);
     }
-    */
+
+    public void OnPointerDown(PointerEventData eventData)
+    {
+        OnDrag(eventData);
+    }
+
+    private void eventStart(PointerEventData eventData)
+    {
+        if(!dragOn)
+        {
+            OnDrag(eventData);
+        }
+    }
+
+    public void OnDrag(PointerEventData eventData)
+    {
+        dragOn = true;
+        Vector2 position = RectTransformUtility.WorldToScreenPoint(canvas.worldCamera, background.position);
+        Vector2 radius = background.sizeDelta / 2;
+        input = (eventData.position - position) / (radius * canvas.scaleFactor);
+        HandleInput(input.magnitude, input.normalized);
+        handle.anchoredPosition = input * radius;
+    }
+
+    public void OnPointerUp(PointerEventData evenData)
+    {
+        input = Vector2.zero;
+        handle.anchoredPosition = Vector2.zero;
+        dragOn = false;
+    }
+
+    private void HandleInput(float magnitude, Vector2 normalised)
+    {
+        if (magnitude > 1)
+            input = normalised;
+    }
 }
