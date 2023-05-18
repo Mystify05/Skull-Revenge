@@ -12,40 +12,47 @@ public class SPJoystick : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoi
     private Vector2 input = Vector2.zero;
     private Touch touch;
     private bool touchOn = false;
-    private bool dragOn = false;
+    public bool dragOn = false;
 
     private void Start()
     {
         canvas = GetComponentInParent<Canvas>();
+        //Die Mitte wird fest gelegt
+        Vector2 center = new Vector2(0.5f, 0.5f);
+        background.pivot = center;
+        //min und max sind hier, damit handle immer in der Mitte von background sind
+        handle.anchorMin = center;
+        handle.anchorMax = center;
+        handle.pivot = center;
+        //damit handle am Anfang in der Mitte ist
+        handle.anchoredPosition = Vector2.zero;
     }
 
     private void Update()
     {
-        if(Input.touchCount > 0 && !touchOn)
+        if (!dragOn)
         {
-            touchOn = true;
-            touch = Input.GetTouch(0);
-            background.position = touch.position;
-        }
-        else if(Input.touchCount == 0)
-            touchOn = false;
+            if (Input.touchCount > 0 && !touchOn)
+            {
+                touchOn = true;
+                touch = Input.GetTouch(0);
+                background.position = touch.position;
 
-        PointerEventData pData = new PointerEventData(EventSystem.current);
-        pData.position = touch.position;
-        eventStart(pData);
+                Input.simulateMouseWithTouches = false;
+                Input.simulateMouseWithTouches = true;
+
+                /*PointerEventData pData = new PointerEventData(EventSystem.current);
+                pData.position = touch.position;
+                OnPointerDown(pData);*/
+            }
+            else if (Input.touchCount == 0)
+                touchOn = false;
+        }
     }
 
     public void OnPointerDown(PointerEventData eventData)
     {
         OnDrag(eventData);
-    }
-
-    private void eventStart(PointerEventData eventData)
-    {
-        if(!dragOn)
-        {
-            OnDrag(eventData);
-        }
     }
 
     public void OnDrag(PointerEventData eventData)

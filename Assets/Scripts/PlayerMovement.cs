@@ -8,11 +8,11 @@ public class PlayerMovement : MonoBehaviour
     public Image knob;
     [SerializeField]
     private float speed = 5f;
-    private Joystick joystick;
+    private PlayerJoystick joystick;
     // Start is called before the first frame update
     void Start()
     {
-        joystick = knob.GetComponent<Joystick>();
+        joystick = knob.GetComponent<PlayerJoystick>();
     }
 
     // Update is called once per frame
