@@ -9,6 +9,7 @@ public class JoyStickTest : MonoBehaviour
     [SerializeField] private RectTransform background = null;
     [SerializeField] private RectTransform handle = null;
     [SerializeField] private Image field = null; //field ist gleich backgrounds Image
+    [SerializeField] private float deadZone;
     private GameObject tpPosition;
     private Canvas canvas;
     private Vector2 input = Vector2.zero;
@@ -17,9 +18,21 @@ public class JoyStickTest : MonoBehaviour
     private WhoesTouch whoesTouch = new WhoesTouch();
 
     public Vector2 Direction { get { return new Vector2(input.x, input.y); } }
+    public float DeadZone
+    {
+        set
+        {
+            if (value <= 1)
+                deadZone = value;
+            else
+                Debug.Log("DeadZone darf nicht größer als 1 Sein");
+        }
+    }
 
     void Start()
     {
+        DeadZone = deadZone;
+
         canvas = GetComponentInParent<Canvas>();
         Vector2 center = new Vector2(0.5f, 0.5f);
         background.pivot = center;
@@ -55,13 +68,7 @@ public class JoyStickTest : MonoBehaviour
         }
         else
         {
-            moveToZero();
-            try
-            {
-                tpPosition.GetComponent<TPPositioning>().Destroy();
-            } catch{}
-            touchOn = false;
-            field.enabled = false;
+            moveToZero(input.magnitude);
         }
     }
 
@@ -78,12 +85,40 @@ public class JoyStickTest : MonoBehaviour
     {
         if (magnitude > 1)
             input = normalised;
+        if (magnitude < deadZone)
+        {
+            tpPosition.GetComponent<SpriteRenderer>().color = Color.red;
+        }
+        else
+        {
+            tpPosition.GetComponent<SpriteRenderer>().color = Color.white;
+        }
     }
 
-    private void moveToZero()
+    private void moveToZero(float magnitude)
     {
         background.position = startPosition;
         input = Vector2.zero;
         handle.anchoredPosition = Vector2.zero;
+
+        if(magnitude < deadZone)
+        {
+            try
+            {
+                tpPosition.GetComponent<TPPositioning>().Cancel();
+            }
+            catch { }
+        }
+        else
+        {
+            try
+            {
+                tpPosition.GetComponent<TPPositioning>().DestroyObjekt();
+            }
+            catch { }
+        }
+
+        touchOn = false;
+        field.enabled = false;
     }
 }

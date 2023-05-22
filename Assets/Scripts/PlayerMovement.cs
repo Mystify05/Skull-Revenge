@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     private float speed = 5f;
     private PlayerJoystick joystick;
+    public PlayerJoystick Joystick { get { return joystick; } }
     // Start is called before the first frame update
     void Start()
     {

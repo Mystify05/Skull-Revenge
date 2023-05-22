@@ -20,12 +20,18 @@ public class TPPositioning : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Es soll nur eine bestimmte Reichweite haben
         transform.Translate(joystick.Direction * Time.deltaTime * speed);
     }
 
-    public void Destroy()
+    public void DestroyObjekt()
     {
         player.transform.position = transform.position;
+        Destroy(gameObject);
+    }
+
+    public void Cancel()
+    {
         Destroy(gameObject);
     }
 }

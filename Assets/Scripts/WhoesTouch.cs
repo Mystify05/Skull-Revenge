@@ -8,10 +8,24 @@ public class WhoesTouch
     private static int rightTouch;
     private static int leftTouch;
 
-    public int RightTouch { get { return rightTouch; } }
-    public int LeftTouch { get { return leftTouch; } }
+    public int RightTouch 
+    { 
+        get 
+        {
+            Update();
+            return rightTouch; 
+        } 
+    }
+    public int LeftTouch 
+    { 
+        get 
+        {
+            Update();
+            return leftTouch; 
+        } 
+    }
 
-    public void Update()
+    private void Update()
     {
         touches = Input.touchCount;
         rightTouch = -1;

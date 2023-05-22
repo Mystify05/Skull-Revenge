@@ -30,7 +30,6 @@ public class PlayerJoystick : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        whoesTouch.Update();
         if (Input.touchCount > 0 && whoesTouch.LeftTouch != -1)
         {
             Touch touch = Input.GetTouch(whoesTouch.LeftTouch);
