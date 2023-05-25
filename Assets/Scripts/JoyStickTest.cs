@@ -8,6 +8,7 @@ public class JoyStickTest : MonoBehaviour
     [SerializeField] private GameObject tpPrefab;
     [SerializeField] private RectTransform background = null;
     [SerializeField] private RectTransform handle = null;
+    [SerializeField] private RectTransform touchCheck = null;
     [SerializeField] private Image field = null; //field ist gleich backgrounds Image
     [SerializeField] private float deadZone;
     private GameObject tpPosition;
@@ -18,15 +19,9 @@ public class JoyStickTest : MonoBehaviour
     private WhoesTouch whoesTouch = new WhoesTouch();
 
     public Vector2 Direction { get { return new Vector2(input.x, input.y); } }
-    public float DeadZone
-    {
-        set
-        {
-            if (value <= 1)
-                deadZone = value;
-            else
-                Debug.Log("DeadZone darf nicht größer als 1 Sein");
-        }
+    public float DeadZone { set { 
+            if (value <= 1) deadZone = value; 
+            else Debug.Log("DeadZone darf nicht größer als 1 Sein"); } 
     }
 
     void Start()
@@ -51,7 +46,7 @@ public class JoyStickTest : MonoBehaviour
         if (Input.touchCount > 0 && whoesTouch.RightTouch != -1)
         {
             Touch touch = Input.GetTouch(whoesTouch.RightTouch);
-            if(touch.position.x > Screen.width / 2)
+            if(touch.position.x > Screen.width / 2 && RectTransformUtility.RectangleContainsScreenPoint(touchCheck, touch.position))
             {
                 field.enabled = true;
                 if (touchOn)
@@ -77,14 +72,19 @@ public class JoyStickTest : MonoBehaviour
         Vector2 position = RectTransformUtility.WorldToScreenPoint(canvas.worldCamera, background.position);
         Vector2 radius = background.sizeDelta / 2;
         input = (touchPosition - position) / (radius * canvas.scaleFactor);
-        handleInput(input.magnitude, input.normalized);
+        handleInput(input.magnitude, input.normalized, touchPosition);
         handle.anchoredPosition = input * radius;
     }
 
-    private void handleInput(float magnitude, Vector2 normalised)
+    private void handleInput(float magnitude, Vector2 normalised, Vector2 touchPosition)
     {
         if (magnitude > 1)
+        {
+            Vector2 r = background.sizeDelta / 2;
+            Vector2 newPosiiton = touchPosition - (normalised * r);
+            background.position = newPosiiton;
             input = normalised;
+        }
         if (magnitude < deadZone)
         {
             tpPosition.GetComponent<SpriteRenderer>().color = Color.red;
