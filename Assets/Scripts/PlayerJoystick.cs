@@ -6,15 +6,29 @@ public class PlayerJoystick : MonoBehaviour
 {
     [SerializeField] private RectTransform background = null;
     [SerializeField] private RectTransform handle = null;
+    [SerializeField] private float deadZone;
     private Canvas canvas;
     private Vector2 input = Vector2.zero;
     private Vector2 startPosition;
     private bool touchOn = false;
     private WhoesTouch whoesTouch = new WhoesTouch();
     public Vector2 Direction { get { return new Vector2(input.x, input.y); } }
+
+    public float DeadZone { set
+        {
+            if (value <= 1)
+                deadZone = value;
+            else
+                Debug.Log("DeadZone darf nicht größer als 1 sein");
+        }
+        get { return deadZone; }
+    }
+
     // Start is called before the first frame update
     void Start()
     {
+
+
         canvas = GetComponentInParent<Canvas>();
         Vector2 center = new Vector2(0.5f, 0.5f);
         background.pivot = center;

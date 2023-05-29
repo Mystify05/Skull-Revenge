@@ -6,8 +6,8 @@ using UnityEngine.UI;
 public class PlayerMovement : MonoBehaviour
 {
     public Image knob;
-    [SerializeField]
-    private float speed = 5f;
+    [SerializeField] private float speed = 5f;
+    [SerializeField] private Animator animator;
     private PlayerJoystick joystick;
     public PlayerJoystick Joystick { get { return joystick; } }
     // Start is called before the first frame update
@@ -19,6 +19,7 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        animator.SetFloat("Speed", joystick.Direction.x);
         transform.Translate(joystick.Direction * Time.deltaTime * speed);
     }
 }

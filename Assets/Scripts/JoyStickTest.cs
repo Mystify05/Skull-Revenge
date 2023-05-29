@@ -21,7 +21,7 @@ public class JoyStickTest : MonoBehaviour
     public Vector2 Direction { get { return new Vector2(input.x, input.y); } }
     public float DeadZone { set { 
             if (value <= 1) deadZone = value; 
-            else Debug.Log("DeadZone darf nicht größer als 1 Sein"); } 
+            else Debug.Log("DeadZone darf nicht größer als 1 sein"); } 
     }
 
     void Start()
