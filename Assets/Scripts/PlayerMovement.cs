@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class PlayerMovement : MonoBehaviour
 {
     public Image knob;
-    [SerializeField] private float speed = 5f;
+    [SerializeField] private float speed = 10f;
     [SerializeField] private Animator animator;
     private PlayerJoystick joystick;
     public PlayerJoystick Joystick { get { return joystick; } }
