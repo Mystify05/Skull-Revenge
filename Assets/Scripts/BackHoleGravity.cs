@@ -19,7 +19,12 @@ public class BackHoleGravity : MonoBehaviour
 
             Vector2 r = gameObject.transform.position - objects[i].transform.position;
             if (r.magnitude > 0.2f)
-                objects[i].transform.Translate((1 / Mathf.Pow(r.magnitude, 2) + 6) * speed * Time.deltaTime * r.normalized);
+            {
+                objects[i].GetComponent<Direction>().Directions["BlackHoleGravity"] = (1 / Mathf.Pow(r.magnitude, 2) + 6) * speed * r.normalized;
+                //objects[i].transform.Translate();
+            }
+            else
+                objects[i].GetComponent<Direction>().SetZero();
         }
     }
 
@@ -30,6 +35,7 @@ public class BackHoleGravity : MonoBehaviour
 
     public void OnTriggerExit2D(Collider2D collision)
     {
+        objects[objects.IndexOf(collision.gameObject)].GetComponent<Direction>().UnFreeze("BlackHoleGravity");
         objects.Remove(collision.gameObject);
     }
 }

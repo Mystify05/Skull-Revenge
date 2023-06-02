@@ -8,6 +8,7 @@ public class Shot : MonoBehaviour
     private float speed = 5f;
     [SerializeField]
     private float damage = 10;
+    private Direction direction;
 
     public float Speed { get { return speed; } set { speed = value; } }
     public float Damage { get { return damage; } set { damage= value; } }
@@ -16,13 +17,15 @@ public class Shot : MonoBehaviour
     {
         Speed = speed;
         Damage = damage;
+        direction = GetComponent<Direction>();
         Destroy(gameObject, 3);
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(Speed * Time.deltaTime * Vector2.up);
+        direction.Directions["Shot"] = Vector2.up * Speed;
+        transform.Translate(direction.Richtung * Time.deltaTime);
     }
 
     public void OnTriggerEnter2D(Collider2D collision)
