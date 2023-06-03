@@ -8,24 +8,24 @@ public class Attacks : MonoBehaviour
     private GameObject player;
     [SerializeField]
     private GameObject shadowBall;
-    private Vector2 oldDirection;
-    private PlayerJoystick joystick;
+    //private Vector2 oldDirection;
+    //private PlayerJoystick joystick;
 
     private void Start()
     {
         player = GameObject.FindWithTag("Player");
-        joystick = player.GetComponent<PlayerMovement>().Joystick;
+        //joystick = player.GetComponent<PlayerMovement>().Joystick;
     }
 
     private void Update()
     {
-        if(joystick.Direction.magnitude > joystick.DeadZone)
-            oldDirection = joystick.Direction;
+        /*if(joystick.Direction.magnitude > joystick.DeadZone)
+            oldDirection = joystick.Direction;*/
     }
 
     public void ShadowBall()
     {
         GameObject sb = Instantiate(shadowBall, player.transform.position, Quaternion.identity);
-        sb.transform.Rotate(0, 0, Mathf.Atan2(oldDirection.y, oldDirection.x) * Mathf.Rad2Deg - 90);
+        //sb.transform.Rotate(0, 0, Mathf.Atan2(oldDirection.y, oldDirection.x) * Mathf.Rad2Deg - 90);
     }
 }
