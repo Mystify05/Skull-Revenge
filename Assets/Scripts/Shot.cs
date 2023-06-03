@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class Shot : MonoBehaviour
@@ -8,6 +9,8 @@ public class Shot : MonoBehaviour
     private float speed = 5f;
     [SerializeField]
     private float damage = 10;
+    private Vector2 shotDirection;
+    private PlayerMovement playerMovementScript;
     private Direction direction;
 
     public float Speed { get { return speed; } set { speed = value; } }
@@ -18,13 +21,15 @@ public class Shot : MonoBehaviour
         Speed = speed;
         Damage = damage;
         direction = GetComponent<Direction>();
+        playerMovementScript = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
+        shotDirection = playerMovementScript.OldDirection.normalized;
         Destroy(gameObject, 3);
     }
 
     // Update is called once per frame
     void Update()
     {
-        direction.Directions["Shot"] = Vector2.up * Speed;
+        direction.Directions["Shot"] = shotDirection * Speed;
         transform.Translate(direction.Richtung * Time.deltaTime);
     }
 
