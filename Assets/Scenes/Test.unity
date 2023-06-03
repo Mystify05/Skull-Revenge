@@ -752,6 +752,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 842205643, guid: 42aeeefb397389e4fa1d741054a09901, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 842205643, guid: 42aeeefb397389e4fa1d741054a09901, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 770967589513832209, guid: 42aeeefb397389e4fa1d741054a09901, type: 3}
       propertyPath: m_Name
       value: Obstacle (3)
@@ -762,11 +770,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 770967589513832212, guid: 42aeeefb397389e4fa1d741054a09901, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.09
+      value: -7.48
       objectReference: {fileID: 0}
     - target: {fileID: 770967589513832212, guid: 42aeeefb397389e4fa1d741054a09901, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.06
+      value: 1.21
       objectReference: {fileID: 0}
     - target: {fileID: 770967589513832212, guid: 42aeeefb397389e4fa1d741054a09901, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1064,9 +1072,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 842205643, guid: 42aeeefb397389e4fa1d741054a09901, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 842205643, guid: 42aeeefb397389e4fa1d741054a09901, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 770967589513832209, guid: 42aeeefb397389e4fa1d741054a09901, type: 3}
       propertyPath: m_Name
       value: Obstacle (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 770967589513832209, guid: 42aeeefb397389e4fa1d741054a09901, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 770967589513832212, guid: 42aeeefb397389e4fa1d741054a09901, type: 3}
       propertyPath: m_RootOrder
@@ -1435,9 +1455,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 842205643, guid: 42aeeefb397389e4fa1d741054a09901, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 842205643, guid: 42aeeefb397389e4fa1d741054a09901, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 770967589513832209, guid: 42aeeefb397389e4fa1d741054a09901, type: 3}
       propertyPath: m_Name
       value: Obstacle (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 770967589513832209, guid: 42aeeefb397389e4fa1d741054a09901, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 770967589513832212, guid: 42aeeefb397389e4fa1d741054a09901, type: 3}
       propertyPath: m_RootOrder
@@ -1641,9 +1673,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 842205643, guid: 42aeeefb397389e4fa1d741054a09901, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 842205643, guid: 42aeeefb397389e4fa1d741054a09901, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 770967589513832209, guid: 42aeeefb397389e4fa1d741054a09901, type: 3}
       propertyPath: m_Name
       value: Obstacle (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 770967589513832209, guid: 42aeeefb397389e4fa1d741054a09901, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 770967589513832212, guid: 42aeeefb397389e4fa1d741054a09901, type: 3}
       propertyPath: m_RootOrder
@@ -1698,6 +1742,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 842205643, guid: 42aeeefb397389e4fa1d741054a09901, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 842205643, guid: 42aeeefb397389e4fa1d741054a09901, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 770967589513832209, guid: 42aeeefb397389e4fa1d741054a09901, type: 3}
       propertyPath: m_Name
       value: Obstacle

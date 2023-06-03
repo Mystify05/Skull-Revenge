@@ -5,7 +5,7 @@ using UnityEngine;
 public class BackHoleGravity : MonoBehaviour
 {
     private List<GameObject> objects = new List<GameObject>();
-    private float speed = 5f;
+    private const float speed = 5f;
     // Update is called once per frame
     void Update()
     {
@@ -21,6 +21,7 @@ public class BackHoleGravity : MonoBehaviour
             if (r.magnitude > 0.2f)
             {
                 objects[i].GetComponent<Direction>().Directions["BlackHoleGravity"] = (1 / Mathf.Pow(r.magnitude, 2) + 6) * speed * r.normalized;
+                objects[i].GetComponent<Direction>().Directions["Effect"] = 3 * speed * (objects[i].GetComponent<Direction>().Richtung.y > 0 ? Vector2.up : Vector2.down);
                 //objects[i].transform.Translate();
             }
             else
@@ -36,6 +37,7 @@ public class BackHoleGravity : MonoBehaviour
     public void OnTriggerExit2D(Collider2D collision)
     {
         objects[objects.IndexOf(collision.gameObject)].GetComponent<Direction>().UnFreeze("BlackHoleGravity");
+        objects[objects.IndexOf(collision.gameObject)].GetComponent<Direction>().UnFreeze("Effect");
         objects.Remove(collision.gameObject);
     }
 }

@@ -17,13 +17,13 @@ public class Direction : MonoBehaviour
     { 
         get 
         {
+            if (freeze)
+                return Vector2.zero;
             richtung = Vector2.zero;
             foreach(KeyValuePair<string, Vector2> direction in directions)
             {
                 richtung += direction.Value;
             }
-            if(freeze)
-                return Vector2.zero;
             return richtung; 
         } 
     }
